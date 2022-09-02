@@ -11,7 +11,7 @@ rtm.start()
 
 rtm.on('ready', async () => {
     console.log('Chitti 2.0 started')
-    sendMessage(BOT_SPAM_CHANNEL, `Chitti 2.0 is online.`)
+    // sendMessage(BOT_SPAM_CHANNEL, `Chitti 2.0 is online.`)
 })
 
 rtm.on('slack_event', async (eventType, event) => {
@@ -50,6 +50,8 @@ rtm.on('slack_event', async (eventType, event) => {
             hello(event.channel, event.user ,`Your EC will connect to you soon ,meanwhile please raise a ticket`)
         }
     }
+
+
     else{
         return
     }
