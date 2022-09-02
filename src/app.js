@@ -10,21 +10,54 @@ rtm.start()
   .catch(console.error);
 
 rtm.on('ready', async () => {
-    console.log('bot started')
-    sendMessage(BOT_SPAM_CHANNEL, `Bot version ${packageJson.version} is online.`)
+    console.log('Chitti 2.0 started')
+    sendMessage(BOT_SPAM_CHANNEL, `Chitti 2.0 is online.`)
 })
 
 rtm.on('slack_event', async (eventType, event) => {
+    // console.log(event)
+
     if (event && event.type === 'message'){
-        if (event.text === '!hello') {
-            hello(event.channel, event.user)
+        if (event.text === 'hello') {
+            hello(event.channel, event.user ,` how is your day`)
         }
+    }
+
+   if (event && event.type === 'user_typing'){
+        hello(event.channel, event.user ,"seems like you have intersting in mind")
+    
+}
+
+    if (event && event.type === 'member_joined_channel' || event && event.type === 'user_profile_changed' ){
+            hello(event.channel, event.user ," I'm Chitti the Robot. Speed 1 terahertz, memory 1 zigabyte. ")
+        
+    }
+
+  if (event && event.type === 'message'){
+        if (event.text.split(" ").includes("code") && event.text.split(" ").includes("send")) {
+            hello(event.channel, event.user ,`Do not encourage plagirism `)
+        }
+    }
+
+    if (event && event.type === 'message'){
+        if (event.text.split(" ").includes("problem") || event.text.split(" ").includes("error")) {
+            hello(event.channel, event.user ,`please wait for some time instructor will get back to you soon.`)
+        }
+    }
+
+    if (event && event.type === 'message'){
+        if (event.text.split(" ").includes("evaluation") && event.text.split(" ").includes("marks")) {
+            hello(event.channel, event.user ,`Your EC will connect to you soon ,meanwhile please raise a ticket`)
+        }
+    }
+    else{
+        return
     }
 })
 
 
-function hello (channelId, userId) {
-    sendMessage(channelId, `Heya! <@${userId}>`)
+function hello (channelId, userId ,usermessage) {
+    sendMessage(channelId, `Hi! <@${userId}>  ${usermessage}`)
 }
 
 async function sendMessage(channel, message) {
