@@ -13,6 +13,6 @@
     "@slack/rtm-api": "^6.0.0",
     "@slack/web-api": "^5.10.0",
     "esm": "^3.2.25",
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.22"
   }
 }
